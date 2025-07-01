@@ -1,0 +1,65 @@
+<main class="main-account">
+    <div class="loading" *ngIf="!accountForm && !subscriptions"><mat-spinner></mat-spinner></div>
+    <section class="user">
+        <mat-card class="card">
+            <mat-card-header class="card-header" fxLayoutAlign="center center">
+                <mat-card-title class="title">User profile</mat-card-title>
+            </mat-card-header>
+            <form *ngIf="accountForm" class="account-form" [formGroup]="accountForm" (ngSubmit)="submit()">
+                <mat-card-content class="account-content" fxLayout="column">
+                    
+                    <mat-form-field class="field">
+                        <input matInput type="text" formControlName="name">
+                    </mat-form-field>
+    
+                    <mat-form-field class="field">
+                        <input matInput type="email" formControlName="email">
+                    </mat-form-field>
+
+                    <mat-form-field  class="field password account">
+                        <input placeholder="Mot de passe" matInput [type]="hide ? 'password' : 'text'" formControlName="password">
+                        <button class="visibility" type="button" mat-icon-button matSuffix (click)="hide = !hide">
+                            <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                        </button>
+                    </mat-form-field>
+    
+                </mat-card-content>
+    
+                <div class="buttons">
+                    <button id="save" type="submit" mat-raised-button [disabled]="accountForm.invalid">Save</button>
+                    <button id="logout" (click)="logout()" mat-button color="warn">Log out</button>
+                </div>
+                <div *ngIf="onError">
+                    <p class="error-message">Account update failed, please check that the following fields meet these criteria: </p>
+                    <ul>
+                        <li>Email: Valid email address format</li>
+                        <li>Username: Contains at least 3 characters</li>
+                        <li>Password: Contains at least 8 characters, including at least one uppercase/lowercase letter, one number, and one special character </li>
+                    </ul>
+                </div>
+                <div *ngIf="onErrorEmail">
+                    <p class="error-message">Please note, this email address is already used by another user!</p>
+                </div>
+                <div *ngIf="loading" class="loading" style="margin-top: 1rem;">
+                    <mat-spinner [diameter]="60"></mat-spinner>
+                </div>
+            </form>
+        </mat-card>
+    </section>
+    <hr>
+    <section class="subscriptions">
+        <h1>Subscriptions</h1>
+        <div class="subscriptions__list">
+            <mat-card *ngFor="let subscription of subscriptions" class="subscriptions__subscription">
+                <div class="subscriptions__subscription__title-text">
+                    <mat-card-title class="subscriptions__subscription__title-text__title">{{subscription.name}}</mat-card-title>
+                    <p>Description : {{subscription.description}}</p>
+                </div>
+                <button id="unsubscribe_button" (click)="click(subscription.id)" class="subscriptions__subscription__button" mat-raised-button>{{subscription.isSubscribed ? "Se désabonner" : "S'abonner"}}</button>
+            </mat-card>
+        </div>
+        <div *ngIf="subscriptions?.length==0" class="no-subscriptions">
+            <p>No subscription</p>
+          </div>
+    </section>
+</main>

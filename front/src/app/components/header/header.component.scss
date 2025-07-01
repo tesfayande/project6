@@ -1,0 +1,227 @@
+@use '@angular/material' as mat;
+@include mat.core();
+header{
+    display: flex;
+    flex-direction: column;
+}
+
+.logo_div{
+    border-bottom: 1px solid;
+    padding: 0 4rem;
+}
+
+.logo_div[showNavMenu="true"]{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.logo_div[logged="false"] > .nav-element{
+    display: none;
+}
+
+.logo_div[logged="false"]{
+    justify-content: center;
+    border-bottom: 0;
+}
+
+.nav-element.false{
+    display: none;
+}
+
+.nav-element.true{
+    display: block;
+}
+
+ul{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 0;
+    column-gap: 2rem;
+}
+
+li, a{
+    display: flex;
+    align-self: center;
+    list-style: none;
+}
+
+.account_circle{
+    font-size: 32px;
+}
+
+li:hover, a:hover{
+    cursor: pointer;
+}
+
+#nav_posts{
+    color: #6C5CCF;
+}
+
+#nav_topics[active="true"], #nav_posts[active="true"],.account_circle[active="true"],#nav_posts_sidenav[active="true"],#nav_topics_sidenav[active="true"], #nav_account_sidenav_icon[active="true"]{
+    color: #6C5CCF;
+}
+
+#nav_topics[active="false"], #nav_posts[active="false"],.account_circle[active="false"],#nav_posts_sidenav[active="false"],#nav_topics_sidenav[active="false"], #nav_account_sidenav_icon[active="false"]{
+    color: black;
+}
+
+app-header[ng-reflect-logged="false"] .back_div{
+    display: block;
+}
+
+app-header[ng-reflect-logged="true"] .back_div{
+    display: none;
+}
+
+.logo{
+    width: 200px;
+    height: 100px;
+}
+
+.back:hover{
+    cursor: pointer;
+}
+
+.sidenav-container {
+    /* When the sidenav is not fixed, stretch the sidenav container to fill the available space. This
+       causes `<mat-sidenav-content>` to act as our scrolling element for desktop layouts. */
+    flex:1;
+    background-color: white;   
+}
+
+
+  
+#snav{
+    width: 62.5%;
+    background-color: white;
+    border: 1px solid;
+    overflow: hidden;
+    box-shadow: 0px 0px 0 100vmax rgba(0,0,0,0.7);
+}
+
+.sidenav-list{
+    display: flex;
+    flex-direction: column-reverse;
+    height: 100%;
+    padding: 0;
+    overflow: hidden;
+}
+
+.sidenav-list > ul{
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: space-between;
+    margin: 0;
+    height: 85%;
+    padding-right: 1rem;
+}
+
+.sidenav-list{
+    &__posts-topics{
+        display: flex;
+        flex-direction: column;
+        row-gap: 1rem;
+        &__element{
+            font-size: 22px;
+        }
+    }
+}
+
+.icon_end{align-self: flex-end;}
+
+.icon_end > .account_circle{font-size: 64px;}
+
+// PHONE
+@media (max-width: 767px) {
+    .header-element{
+        flex-direction: column-reverse;
+    }
+    .logo_div{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-bottom: 1px solid;
+        padding: 0 1rem;
+    }
+    .mat-icon{
+        display: flex;
+        background-color: transparent;
+        width: 32px;
+        height: 32px;
+        justify-content: center;
+        align-items: center;
+    }
+    .back_div{
+        padding: 1rem;
+    }
+    .sidenav-list > ul{
+        display: flex;
+    }
+    ul{
+        display: none;
+    }
+}
+
+// TABLET
+@media(min-width:768px) and (max-width:1199px){
+    .logo_div{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-bottom: 1px solid;
+        padding: 0 1rem;
+    }
+    .mat-icon{
+        display: flex;
+        background-color: transparent;
+        width: 32px;
+        height: 32px;
+        justify-content: center;
+        align-items: center;
+    }
+    .back_div{
+        padding-left: 4rem;
+        padding-top: 1rem;
+    }
+    .sidenav-list > ul{
+        display: flex;
+    }
+    ul{
+        display: none;
+    }
+}
+
+// DESKTOP
+@media(min-width:1200px){
+    .logo_div[logged="false"]{
+        justify-content: flex-start;
+        border-bottom: 1px solid;
+    }
+    .logo_div{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+    }
+    .mat-icon{
+        display: none;
+    }
+    .back_div{
+        padding-left: 8rem;
+        padding-top: 1rem;
+    }
+    ul{
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        padding: 0;
+        column-gap: 2rem;
+    }
+    #snav{
+        display: none;
+        background-color:aliceblue;
+    }
+}

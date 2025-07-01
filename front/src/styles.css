@@ -1,0 +1,115 @@
+/* You can add global styles to this file, and also import other style files */
+@import '@angular/material/prebuilt-themes/indigo-pink.css';
+
+html{
+    height: 100%;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+body{
+    min-height: 100%;
+    margin: 0;
+}
+
+.remove-arrow{
+    .mat-select-arrow {
+        border: none;
+      }
+}
+
+.mat-form-field textarea.mat-input-element {
+    resize: none;
+}
+
+.mat-form-field-appearance-legacy .mat-form-field-infix {
+     padding: 0; 
+}
+
+.mat-form-field-appearance-fill .mat-form-field-flex {
+    padding: 0;
+    background-color: white;
+}
+
+.comment .mat-form-field-appearance-fill .mat-form-field-flex{
+    background-color: rgba(0,0,0,.04);
+}
+
+app-header[ng-reflect-logged="false"] .back_div{
+    display: block;
+}
+
+app-header[ng-reflect-logged="true"] .back_div{
+    display: none;
+}
+
+app-header[ng-reflect-logged="false"] .nav-element{
+    display: none;
+}
+
+app-header[ng-reflect-logged="true"] .nav-element{
+    display: block;
+}
+
+#nav_topics[active="true"], #nav_posts[active="true"],.account_circle[active="true"]{
+    color: #6C5CCF;
+}
+
+#nav_topics[active="false"], #nav_posts[active="false"],.account_circle[active="false"]{
+    color: black;
+}
+
+.mat-form-field-wrapper{
+    padding-bottom: 0;
+}
+
+.password .mat-form-field-flex{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    font-size: 17px;
+}
+
+.password .mat-form-field-suffix{
+    position: absolute;
+    right: 5px;
+}
+
+.account .mat-form-field-suffix{
+    top: 9px;
+}
+
+.account .mat-form-field-label{
+    padding-left: 6px;
+}
+
+.mat-form-field.mat-focused .mat-form-field-label{
+    color: #a9a9a9;
+}
+
+#nav_topics[active="true"], #nav_posts[active="true"],.account_circle[active="true"],#nav_posts_sidenav[active="true"],#nav_topics_sidenav[active="true"], #nav_account_sidenav_icon[active="true"]{
+    color: #6C5CCF;
+}
+
+#nav_topics[active="false"], #nav_posts[active="false"],.account_circle[active="false"],#nav_posts_sidenav[active="false"],#nav_topics_sidenav[active="false"], #nav_account_sidenav_icon[active="false"]{
+    color: black;
+}
+
+.field .mat-form-field-infix{
+    border-top: 0;
+}
+
+.loading{
+    align-self: center;
+}
+
+.main-posts[click="none"],.main-account[click="none"],.main-post[click="none"],.main-create[click="none"],.main-topics[click="none"]{
+    pointer-events: none;
+}
+
+/* PHONE */
+@media (max-width: 767px) {
+    app-header[ng-reflect-logged="false"] .logo_div{
+        justify-content: center;
+        border-bottom: 0; 
+    }
+}

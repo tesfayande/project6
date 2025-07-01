@@ -1,0 +1,49 @@
+<main class="main-post">
+    <div class="loading" *ngIf="!post && !comments"><mat-spinner></mat-spinner></div>
+    <section class="post">
+        <mat-card class="card">
+            <mat-card-header class="card-header" fxLayoutAlign="center center">
+                <div class="div_back">
+                    <img class="back" (click)="back()" src="../../../assets/Arrow 9.png" alt="back">
+                </div>
+                <mat-card-title class="title">{{post?.title}}</mat-card-title>
+            </mat-card-header>
+            <mat-card-content class="post__content">
+                <div class="post__content__date-author-topic">
+                    <p>{{post?.createdAt}}</p>
+                    <p>{{post?.author?.name}}</p>
+                    <p>{{post?.topic?.name}}</p>
+                </div>
+                <p class="post__content__text">
+                    Content : {{post?.content}}
+                </p>
+            </mat-card-content>
+        </mat-card>
+    </section>
+    <hr>
+    <section class="comments">
+        <h3 class="comments__title">Comments</h3>
+        <div class="comments__list">
+            <article *ngFor="let comment of comments" class="comments__comment">
+                <p class="comments__comment__username">{{comment?.user?.name}}</p>
+                <p class="comments__comment__text">{{comment?.content}}</p>
+            </article>
+            <div *ngIf="comments?.length==0" class="no-comments">
+                <h2>No comments</h2>
+                <p>Be the first to write a comment.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="comment">
+        <form class="comment__form" [formGroup]="form" (ngSubmit)="sendComment()">
+            <mat-form-field class="comment__form__field" appearance="fill">
+              <textarea class="comment__form__field__textarea" rows="5" matInput placeholder="Write your comment here" formControlName="content"></textarea>
+              <button type="submit" class="button-send" [disabled]="form.invalid">
+                <img id="send" class="comment__form__field__send" src="../../../assets/icon _send_.png" alt="send">
+              </button>
+            </mat-form-field>
+          </form>
+    </section>
+
+</main>

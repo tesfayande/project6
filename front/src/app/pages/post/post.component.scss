@@ -1,0 +1,213 @@
+main{
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    padding: 2rem 0;
+}
+
+.post{
+    &__content{
+        &__date-author-topic{
+            display: flex;
+            flex-direction: row;
+            justify-content: flex-start;
+            flex-wrap: wrap;
+            column-gap: 2rem;
+        }
+    }
+}
+
+.card{
+    padding: 16px 0;
+    box-shadow: none;
+}
+
+.card-header{
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.div_back{
+    display: flex;
+}
+
+.back:hover{
+    cursor: pointer;
+}
+
+.title{
+    font-size: 24px;
+    font-weight: 600;
+}
+
+::ng-deep .card-header .mat-card-header-text{
+    margin: 0;
+}
+
+::ng-deep .card-header .mat-card-header-text .mat-card-title{
+    margin-bottom: 0;
+}
+
+.comments{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding-bottom: 119px;
+    &__title{font-weight: 400;}
+    &__list{
+        display: grid;
+        grid-template-columns: auto;
+    }
+    &__comment{
+        display: flex;
+        column-gap: 1rem; 
+        &__text{
+            border-radius: 6px;
+            padding: 8px 16px;
+        }
+    }
+}
+
+.comment{
+    position: fixed;
+    bottom: 0;
+    background-color: white;
+    border-radius: 6px;
+    border: 1px solid;
+    &__form{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        &__field{
+            width: 100%;
+            ::ng-deep .mat-form-field-infix{
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                padding: 0;
+                border: 0;
+            }
+            ::ng-deep .mat-form-field-flex{
+                padding: 0.75rem 0 0 0.75rem;
+            }
+            &__send{
+                height: min-content;
+            }
+        }
+    }
+}
+
+.button-send{
+    background: none;
+    padding: 0;
+    border: 0;
+    cursor: pointer;
+}
+
+.button-send[disabled]{
+    cursor: default;
+}
+
+.button-send[disabled] > #send{
+    filter: invert(0.45);
+}
+
+::ng-deep .mat-form-field-underline {
+    display: none;
+}
+
+// PHONE
+@media (max-width: 767px) {
+    .main-post{
+        width: 100%;
+    }
+    .card-header{
+        column-gap: 2rem;
+    }
+    hr{
+        width: 95%;
+    }
+    .comments,.post{
+        width: 90%;
+        margin: auto;
+    }
+    .comments{
+        &__comment{
+            flex-direction: row-reverse;
+            align-items: flex-end;
+            justify-content: space-between;
+            &__text{
+                padding-bottom: 32px;
+            }
+        }
+    }
+    .comment{
+        width: 100%;
+    }
+    .button-send{
+        padding: 6px;
+    }
+}
+
+// TABLET
+@media(min-width:768px) and (max-width:1199px){
+    .main-post{
+        width: 85%;
+    }
+    .card-header{
+        column-gap: 2rem;
+    }
+    hr{
+        width: 100%;
+    }
+    .comments{
+        &__comment{
+            flex-direction: row;
+            &__text{
+                background-color: #EEEEEE;
+            }
+        }
+    }
+    .comment{
+        width: inherit;
+    }
+    .button-send{
+        padding: 6px;
+    }
+}
+
+// DESKTOP
+@media(min-width:1200px){
+    .main-post{
+        width: 70%;
+    }
+    .card-header{
+        margin-left: -41px;
+    }
+    .div_back{
+        position: relative;
+        right: 50px;
+    }
+    hr{
+        width: 100%;
+    }
+    .comments{
+        &__comment{
+            flex-direction: row;
+            &__text{
+                background-color: #EEEEEE;
+            }
+        }
+    }
+    .comment{
+        width: inherit;
+        bottom: 10px;
+    }
+    .button-send{
+        position: relative;
+        left: 90px;
+    }
+}

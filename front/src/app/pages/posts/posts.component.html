@@ -1,0 +1,54 @@
+<main class="main-posts">
+    
+   <!-- Token:{{auth_token}}-->
+   
+    <div class="create-filter">
+        <button (click)="navigate()" id="create_button" mat-raised-button>Create new Post</button>
+        <div class="filter">
+            <p class="filter__by">Filter By</p>
+           
+
+<mat-form-field>
+  <mat-label>Filter Option</mat-label>
+  <select matNativeControl (change)="onFilterChange()" [(ngModel)]="selectedFilter">
+    <option value=""></option>
+   @for (filterOption of filterOptions; track filterOption)  {
+      <option [value]="filterOption.value"
+            [selected]="selectedFilter === filterOption.value">{{ filterOption.label }}</option>
+    }
+  </select>
+</mat-form-field>
+
+
+
+        </div>
+
+
+        
+
+
+
+    </div>
+
+    <div class="loading" *ngIf="!posts" ><mat-spinner></mat-spinner></div>
+    
+    <section class="posts">      
+          <mat-card *ngFor="let post of posts" class="posts__post" (click)="navigateToPost(post.id)">
+            <mat-card-header class="posts__post__header">
+              <mat-card-title class="posts__post__header__title">{{post?.title}}</mat-card-title>
+              <mat-card-subtitle class="posts__post__header__subtitle">
+                <p class="posts__post__header__subtitle__date">{{post?.createdAt | date : 'medium'}} </p>
+                <p class="posts__post__header__subtitle__author">{{post.author.name}}</p>
+              </mat-card-subtitle>
+            </mat-card-header>
+            <mat-card-content class="posts__post__content">
+              <p class="posts__post__content__text">Content : {{(post.content.length > 225) ? (post.content | slice:0:225)+'...' : (post.content) }}</p>
+            </mat-card-content>
+          </mat-card>
+          <div *ngIf="posts?.length==0" class="no-posts">
+            <h2>No articles</h2>
+            <p>Be the first to write an article.</p>
+          </div>
+    </section>
+
+</main>

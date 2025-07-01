@@ -1,0 +1,75 @@
+<main class="main-create">
+    <section class="create">
+        <mat-card class="card">
+            <mat-card-header class="card-header" fxLayoutAlign="center center">
+               <!-- <img src="./assets/Arrow 9.png" (click)="back()" class="back" alt="back">-->
+                <mat-card-title class="title">Create new Post</mat-card-title>
+            </mat-card-header>
+            
+
+
+
+<form [formGroup]="postForm" (ngSubmit)="submit()" class="create-form">
+ <mat-card-content class="create-content" fxLayout="column">
+  <mat-form-field appearance="fill" class="full-width">
+    <mat-label>Topic ID</mat-label>
+    <mat-select matNativeControl disableRipple placeholder="Select a theme" floatlLabel="never" class="select" formControlName="topic_id">
+      <mat-option *ngFor="let topic of topics$ " [value]="topic.id">
+        {{topic.name}}
+      </mat-option>
+    </mat-select>
+    <mat-error *ngIf="topicId?.errors?.['required']">
+      Topic ID is required
+    </mat-error>
+  </mat-form-field>
+
+  <mat-form-field appearance="outline" class="full-width" class="field"  appearance="fill">
+    <mat-label>Title</mat-label>
+    
+    <input matInput type="text" placeholder="Article Title" formControlName="title" required>
+                    
+    <mat-hint align="end">{{ title?.value?.length || 0 }}/50</mat-hint>
+    <mat-error *ngIf="title?.errors?.['required']">
+      Title is required
+    </mat-error>
+    <mat-error *ngIf="title?.errors?.['minlength']">
+      Title must be at least 5 characters long
+    </mat-error>
+    <mat-error *ngIf="title?.errors?.['maxlength']">
+      Title cannot exceed 50 characters
+    </mat-error>
+  </mat-form-field>
+
+<mat-form-field class="field"  appearance="fill">
+  
+    <mat-label>Content</mat-label>
+
+    <textarea matInput placeholder="Article content" 
+                       rows="10" id="content" formControlName="content"  required>
+                       </textarea>
+    <!--<textarea matInput formControlName="content" required rows="5"></textarea>-->
+    <mat-hint align="end">{{ content?.value?.length || 0 }}/250</mat-hint>
+    <mat-error *ngIf="content?.errors?.['required']">
+      Content is required
+    </mat-error>
+    <mat-error *ngIf="content?.errors?.['minlength']">
+      Content must be at least 5 characters long
+    </mat-error>
+    <mat-error *ngIf="content?.errors?.['maxlength']">
+      Content cannot exceed 250 characters
+    </mat-error>
+  </mat-form-field>
+
+  <button mat-raised-button color="primary" type="submit" [disabled]="postForm.invalid">
+    Submit Post
+  </button>
+
+  </mat-card-content>
+</form>
+
+
+
+
+        </mat-card>
+    </section>
+</main>

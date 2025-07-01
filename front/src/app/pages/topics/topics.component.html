@@ -1,0 +1,70 @@
+<main class="main-topics">
+
+
+
+<div class="create-filter">
+       
+        <div class="filter">
+            <p class="filter__by">Filter By</p>
+   
+            <img class="filter__arrow" src="../../../assets/Arrow 9.png" alt="arrow">
+
+
+
+<mat-form-field>
+  <mat-label>Filter Option</mat-label>
+  <select matNativeControl (change)="onFilterChange()" [(ngModel)]="selectedFilter">
+    <option value=""></option>
+   @for (filterOption of filterOptions; track filterOption)  {
+      <option [value]="filterOption.value"
+            [selected]="selectedFilter === filterOption.value">{{ filterOption.label }}</option>
+    }
+  </select>
+</mat-form-field>
+
+   <!--<p>You selected: {{selectedFilter}}</p>-->
+
+
+
+        </div>
+
+
+        
+
+
+
+    </div>
+
+
+    <div class="loading" *ngIf="!topics"><mat-spinner></mat-spinner></div>
+    <section class="topics">
+        <mat-card *ngFor="let topic of topics" class="topics__topic">
+            <div class="topics__topic__title-text">
+                <mat-card-title class="topics__topic__title-text__title">{{topic?.name}}</mat-card-title>
+                <p>Description : {{topic?.description}} </p>
+            </div>
+
+
+
+@if(subscriptions?.includes(topic.id)) {
+            <button id="unsubscribe_button" mat-raised-button (click)="click(topic.id)">Unsubscribe</button>
+         }
+         @else 
+         {
+           
+           <button id="subscribe_button" mat-raised-button (click)="click(topic.id)">Subscribe</button>
+         }
+
+
+            
+        </mat-card>
+
+
+<div *ngIf="topics?.length==0" class="no-posts">
+            <h2>No Topic was Found</h2>
+            <p>you can change the filter option.</p>
+          </div>
+
+
+    </section>
+</main>

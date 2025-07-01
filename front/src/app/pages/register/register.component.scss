@@ -1,0 +1,107 @@
+main{
+    margin: auto;
+}
+
+.card{
+    box-shadow: none;
+}
+
+.card-header{
+    justify-content: center;
+}
+
+.title{
+    font-size: 24px;
+}
+
+.register-form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.label{
+    margin-bottom: 5px;
+}
+
+.field{
+    display: flex;
+    flex-direction: column;
+    height: 50px;
+}
+
+input{
+    border: 1px solid;
+    border-radius: 3px;
+    height: 30px;
+    font-size: initial;
+}
+
+::ng-deep .mat-form-field-underline {
+    display: none;
+}
+
+button{
+    background-color: #7763C5;
+    color: white;
+    padding: 2px 16px;
+    border-radius: 5px;
+    font-weight: 600;
+}
+
+
+#register_button{
+background-color: #7763C5;
+    color: white;
+    padding: 2px 16px;
+    border-radius: 5px;
+    font-weight: 600;
+
+}
+
+p{
+    color: red;
+}
+
+.error-message{
+    color: red;
+}
+
+.visibility{
+    display: flex;
+    justify-content: center;
+    background: none;
+    color: black;
+    font-size: x-large;
+}
+
+// PHONE
+@media (max-width: 767px) {
+    .main-register{
+        width: 95%;
+    }
+    .card-content{
+        width: 90%;
+    }
+}
+
+// TABLET
+@media(min-width:768px) and (max-width:1199px){
+    .main-register{
+        width: 85%;
+    }
+    .card-content{
+        width: 55%;
+    }
+    
+}
+
+// DESKTOP
+@media(min-width:1200px){
+    .main-register{
+        width: 70%;
+    }
+    .card-content{
+        width: 40%;
+    }
+}

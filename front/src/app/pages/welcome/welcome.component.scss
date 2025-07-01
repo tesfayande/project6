@@ -1,0 +1,53 @@
+main{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    row-gap: 2rem;
+}
+
+.auth{
+    display: flex;
+    &__button{
+        width: 115px;
+        background-color: white;
+        color: black;
+    }
+}
+
+// PHONE
+@media (max-width: 767px) {
+    .main-welcome{
+        padding-top: 75px;
+    }
+    .logo{
+        &__img{
+            max-width: 225px;
+        }
+    }
+    .auth{
+        flex-direction: column;
+        row-gap: 3rem;
+    }
+}
+
+// TABLET
+@media(min-width:768px) and (max-width:1199px){
+    .main-welcome{
+        padding-top: 100px;
+    }
+    .auth{
+        flex-direction: column;
+        row-gap: 3rem;
+    }
+}
+
+// DESKTOP
+@media(min-width:1200px){
+    .main-welcome{
+        padding-top: 200px;
+    }
+    .auth{
+        flex-direction: row;
+        column-gap: 3rem;
+    }
+}
